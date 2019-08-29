@@ -1,4 +1,4 @@
-part of hamlog;
+// part of hamlog;
 
 abstract class HamlogStorage {
   // Storage(String url);

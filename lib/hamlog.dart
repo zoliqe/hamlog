@@ -1,14 +1,14 @@
 library hamlog;
 
-import 'dart:indexed_db' as idb;
-import 'dart:html' as html;
+// import 'dart:indexed_db' as idb;
+// import 'dart:html' as html;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 import 'package:intl/intl.dart';
 
 export 'src/hamlog_base.dart';
 
-part 'storage.dart';
+// part 'storage.dart';
 part 'convert/cabrillo3.dart';
 part 'convert/sotacsv.dart';
 
@@ -35,7 +35,7 @@ class Qso implements Comparable<Qso> {
   int nr;
   Mode mode;
   int time;
-  double freq;
+  int freq;
   String call;
   String sentRst;
   // String sentCode;
@@ -79,10 +79,10 @@ class Qso implements Comparable<Qso> {
     } else if (data[NR] != null) {
       nr = int.parse(data[NR]);
     }
-    if (data[FREQ] is double) {
+    if (data[FREQ] is int) {
       freq = data[FREQ];
     } else if (data[FREQ] != null) {
-      freq = double.parse(data[FREQ]);
+      freq = int.parse(data[FREQ]);
     }
     mode = Mode.valueOf(data[MODE]);
     if (data[TIME] is int) {
@@ -288,14 +288,14 @@ class LogType {
 
 class Band {
   static const B160 = const Band._("160M", 1800, 2000);
-  static const B80 = const Band._("80M", 3500, 3800);
+  static const B80 = const Band._("80M", 3500, 4000);
   static const B60 = const Band._("60M", 5000, 5500);
-  static const B40 = const Band._("40M", 7000, 7300);
-  static const B30 = const Band._("30M", 10100, 10200);
+  static const B40 = const Band._("40M", 7000, 7500);
+  static const B30 = const Band._("30M", 10000, 10500);
   static const B20 = const Band._("20M", 14000, 14500);
-  static const B17 = const Band._("17M", 18068, 18200);
+  static const B17 = const Band._("17M", 18000, 18500);
   static const B15 = const Band._("15M", 21000, 21500);
-  static const B12 = const Band._("12M", 24890, 24900);
+  static const B12 = const Band._("12M", 24800, 24900);
   static const B10 = const Band._("10M", 28000, 28500);
 
   final String value;
